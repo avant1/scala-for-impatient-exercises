@@ -35,11 +35,11 @@ class Chapter2Spec extends Specification {
       printer.lines mustEqual expectedResult
     }
 
-    "print no numbers if argument equals to 0" in {
+    "print zero if argument equals to 0" in {
       val printer = new AccumulatingPrinter
       subject.javaLikeLoop(0)(printer)
 
-      printer.lines mustEqual Array()
+      printer.lines mustEqual Array(0)
     }
 
     "throw exception if argument is negative" in {
