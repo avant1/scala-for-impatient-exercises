@@ -2,14 +2,20 @@ package impatient.scala.utils.print
 
 class AccumulatingPrinter extends Printer {
 
-  private var printedLines: List[String] = List()
+  private var printedLines: Array[Any] = Array()
 
   override def println(s: String): Unit = {
-    printedLines = s :: printedLines
+    printedLines = printedLines :+ s
+  }
+
+  override def println(i: Int): Unit = {
+    printedLines = printedLines :+ i
   }
 
   def lines = printedLines
 
-  def reset() = printedLines = List()
+  def reset() = {
+    printedLines = Array()
+  }
 
 }

@@ -2,9 +2,9 @@ package impatient.scala.excercises
 
 import impatient.scala.utils.print.AccumulatingPrinter
 import org.specs2.mutable.Specification
-import org.specs2.specification.BeforeAfter
+import org.specs2.specification.BeforeEach
 
-class Chapter2Spec extends Specification  with BeforeAfter {
+class Chapter2Spec extends Specification  with BeforeEach {
 
   val subject = new Chapter2
 
@@ -38,7 +38,7 @@ class Chapter2Spec extends Specification  with BeforeAfter {
 
     "print numbers from positive N to 0" in {
       subject.javaLikeLoop(10)(printer)
-      val expectedResult = (0 to 10).reverse.toList
+      val expectedResult = (0 to 10).reverse.toArray
 
       printer.lines mustEqual expectedResult
     }
@@ -46,17 +46,12 @@ class Chapter2Spec extends Specification  with BeforeAfter {
     "print no numbers if argument equals to 0" in {
       subject.javaLikeLoop(0)(printer)
 
-      printer.lines mustEqual List()
+      printer.lines mustEqual Array()
     }
 
     "throw exception if argument is negative" in {
       subject.javaLikeLoop(-5)(printer) must throwA[RuntimeException]
     }
-
-  }
-
-
-  override def after: Any = {
 
   }
 

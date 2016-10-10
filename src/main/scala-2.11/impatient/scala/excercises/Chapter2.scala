@@ -14,6 +14,11 @@ class Chapter2 {
 
 
   def javaLikeLoop(start: Int)(implicit printer: Printer = ConsolePrinter) = {
+    if (start < 0) {
+      throw new RuntimeException(s"Cannot loop from negative value $start to 0.")
+    }
+
+      (0 to start).reverse.foreach(x => printer.println(x))
 
   }
 
