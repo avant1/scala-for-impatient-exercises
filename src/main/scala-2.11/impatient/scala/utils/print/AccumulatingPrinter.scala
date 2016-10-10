@@ -14,8 +14,4 @@ class AccumulatingPrinter extends Printer {
 
   def lines = printedLines
 
-  def reset() = {
-    printedLines = Array()
-  }
-
 }
