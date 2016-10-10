@@ -44,5 +44,19 @@ class Chapter2 {
       result
   }
 
+  def recursiveCharsProduct(s: String): Long = {
+    var result: Long = 1
+    if (s.length == 1) {
+      result = s(0).toLong
+    } else if (s.length > 1) {
+      result = s(0).toInt * recursiveCharsProduct(s.substring(1))
+    }
+
+    if (result == 1)
+      0
+    else
+      result
+  }
+
 
 }
