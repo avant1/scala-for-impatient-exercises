@@ -65,5 +65,15 @@ class Chapter2Spec extends Specification  with BeforeEach {
     }
   }
 
+  "chars product without loop" should {
+    "be equal to 0 for empty input string" in {
+      subject.charsProductWithoutLoop("") mustEqual 0
+    }
+
+    "of 'Hello' must be equal to 9415087488L" in {
+      subject.charsProductWithoutLoop("Hello") mustEqual 9415087488L
+    }
+  }
+
 
 }
