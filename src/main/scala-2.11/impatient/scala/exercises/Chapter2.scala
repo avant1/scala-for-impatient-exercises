@@ -1,4 +1,4 @@
-package impatient.scala.excercises
+package impatient.scala.exercises
 
 import impatient.scala.utils.print.{ConsolePrinter, Printer}
 
