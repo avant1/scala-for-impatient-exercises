@@ -22,5 +22,9 @@ class Chapter2 {
 
   }
 
+  def charsProduct(s: String) = {
+    0
+  }
+
 
 }
