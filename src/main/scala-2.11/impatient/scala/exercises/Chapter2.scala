@@ -23,7 +23,16 @@ class Chapter2 {
   }
 
   def charsProduct(s: String) = {
-    0
+    var result = 1L
+    for (c <- s) {
+      result = result * c.toInt
+    }
+
+    if (result == 1) {
+      result = 0
+    }
+
+    result
   }
 
 
