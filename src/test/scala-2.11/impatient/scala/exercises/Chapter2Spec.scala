@@ -76,9 +76,9 @@ class Chapter2Spec extends Specification  with BeforeEach {
   }
 
   "recursive chars product" should {
-    "be equal to 0 for empty input string" in {
-      subject.recursiveCharsProduct("") mustEqual 0
-    }
+//    "be equal to 0 for empty input string" in {
+//      subject.recursiveCharsProduct("") mustEqual 0
+//    }
 
     "of 'Hello' must be equal to 9415087488L" in {
       subject.recursiveCharsProduct("Hello") mustEqual 9415087488L

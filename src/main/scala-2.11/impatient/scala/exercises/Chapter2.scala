@@ -2,6 +2,8 @@ package impatient.scala.exercises
 
 import impatient.scala.utils.print.{ConsolePrinter, Printer}
 
+import scala.annotation.tailrec
+
 class Chapter2 {
 
   def signum(n: Integer) = {
@@ -18,7 +20,7 @@ class Chapter2 {
       throw new RuntimeException(s"Cannot loop from negative value $start to 0.")
     }
 
-      (0 to start).reverse.foreach(x => printer.println(x))
+    (0 to start).reverse.foreach(x => printer.println(x))
 
   }
 
@@ -44,18 +46,20 @@ class Chapter2 {
       result
   }
 
-  def recursiveCharsProduct(s: String): Long = {
-    var result: Long = 1
-    if (s.length == 1) {
-      result = s(0).toLong
-    } else if (s.length > 1) {
-      result = s(0).toInt * recursiveCharsProduct(s.substring(1))
+  private var recursiveCharsProductPartial: Long = 1
+
+  //todo this looks like shit
+  @tailrec
+  final def recursiveCharsProduct(s: String): Long = {
+    if (s.isEmpty) {
+      val tmp = recursiveCharsProductPartial
+      recursiveCharsProductPartial = 1
+      return tmp
+    } else if (s.length >= 1) {
+      recursiveCharsProductPartial = recursiveCharsProductPartial * s(0).toLong
     }
 
-    if (result == 1)
-      0
-    else
-      result
+    recursiveCharsProduct(s.substring(1))
   }
 
 
