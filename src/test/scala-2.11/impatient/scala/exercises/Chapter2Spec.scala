@@ -5,6 +5,7 @@ import org.scalacheck.Gen
 import org.specs2.ScalaCheck
 import org.specs2.mutable.Specification
 import org.scalacheck.Prop.forAll
+import org.specs2.matcher.SignificantFigures
 
 class Chapter2Spec extends Specification with ScalaCheck {
 
@@ -104,8 +105,8 @@ class Chapter2Spec extends Specification with ScalaCheck {
 
     "calculate correct value when power is negative and base is negative too" in {
       subject.pow(-2)(-2) mustEqual 0.25
-      subject.pow(-3)(-3) mustEqual -1F/27
-      subject.pow(-4)(-4) mustEqual 1F/(16*16)
+      subject.pow(-3)(-3) mustEqual -1D/27
+      subject.pow(-4)(-4) mustEqual 1D/(16*16)
     }
 
     "calculate correct value when power is positive and base is negative" in {
@@ -114,19 +115,27 @@ class Chapter2Spec extends Specification with ScalaCheck {
       subject.pow(-4)(4) mustEqual 16*16F
     }
 
-    "pass scalacheck set of input" in {
-      val border = 500000
-
-      val bases = Gen.choose(-border, border)
-      val powers = Gen.choose(-border, border)
-
-      forAll(bases) { base =>
-        forAll(powers) { power =>
-          subject.pow(base)(power) mustEqual Math.pow(base, power)
-        }
-      }
+    "pass scalacheck set of input for large range of values" in {
+      val border = Int.MaxValue
+      runPowTestsInBorders(border)
     }
 
+    "pass scalacheck set of input for small range of values" in {
+      val border = 40
+      runPowTestsInBorders(border)
+    }
+
+  }
+
+  private def runPowTestsInBorders(border: Int) = {
+    val bases = Gen.choose(-border, border)
+    val powers = Gen.choose(-border, border)
+
+    forAll(bases) { base =>
+      forAll(powers) { power =>
+        subject.pow(base)(power) must beCloseTo  (Math.pow(base, power), SignificantFigures(50))
+      }
+    }
   }
 
 
