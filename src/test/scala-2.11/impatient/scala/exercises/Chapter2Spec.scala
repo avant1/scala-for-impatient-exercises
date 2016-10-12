@@ -4,6 +4,7 @@ import impatient.scala.utils.print.AccumulatingPrinter
 import org.scalacheck.Gen
 import org.specs2.ScalaCheck
 import org.specs2.mutable.Specification
+import org.scalacheck.Prop.forAll
 
 class Chapter2Spec extends Specification with ScalaCheck {
 
@@ -114,7 +115,16 @@ class Chapter2Spec extends Specification with ScalaCheck {
     }
 
     "pass scalacheck set of input" in {
-      prop { (base: Int, power: Int) => subject.pow(base)(power) mustEqual Math.pow(base, power) }
+      val border = 500000
+
+      val bases = Gen.choose(-border, border)
+      val powers = Gen.choose(-border, border)
+
+      forAll(bases) { base =>
+        forAll(powers) { power =>
+          subject.pow(base)(power) mustEqual Math.pow(base, power)
+        }
+      }
     }
 
   }
