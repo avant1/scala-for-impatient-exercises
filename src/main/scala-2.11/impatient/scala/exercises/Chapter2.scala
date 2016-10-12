@@ -38,7 +38,7 @@ class Chapter2 {
   }
 
   def charsProductWithoutLoop(s: String) = {
-    val result = s.foldLeft(1L)(_ * _)
+    val result = s.map(_.toLong).product
 
     if (result == 1)
       0L
