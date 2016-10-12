@@ -64,7 +64,21 @@ class Chapter2 {
 
 
   def pow(base: Int)(power: Int): Float = {
-    42
+    power match {
+      case 0 => 1
+
+      case x if x < 0 =>
+        1 / pow(base)(-1 * x)
+
+      case x if x > 0 && x % 2 == 1 =>
+        base * pow(base)(x - 1)
+
+      case x if x > 0 && x % 2 == 0 =>
+        val tmp = pow(base)(x / 2).toInt
+        tmp * tmp
+
+    }
+
   }
 
 

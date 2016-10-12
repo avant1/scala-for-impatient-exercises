@@ -101,8 +101,8 @@ class Chapter2Spec extends Specification {
 
     "calculate correct value when power is negative and base is negative too" in {
       subject.pow(-2)(-2) mustEqual 0.25
-      subject.pow(-3)(-3) mustEqual -1/27
-      subject.pow(-4)(-4) mustEqual 1/(16*16)
+      subject.pow(-3)(-3) mustEqual -1F/27
+      subject.pow(-4)(-4) mustEqual 1F/(16*16)
     }
 
     "calculate correct value when power is positive and base is negative" in {
