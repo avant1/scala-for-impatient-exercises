@@ -1,9 +1,11 @@
 package impatient.scala.exercises
 
 import impatient.scala.utils.print.AccumulatingPrinter
+import org.scalacheck.Gen
+import org.specs2.ScalaCheck
 import org.specs2.mutable.Specification
 
-class Chapter2Spec extends Specification {
+class Chapter2Spec extends Specification with ScalaCheck {
 
   val subject = new Chapter2
 
@@ -109,6 +111,10 @@ class Chapter2Spec extends Specification {
       subject.pow(-2)(2) mustEqual 4
       subject.pow(-3)(3) mustEqual -27
       subject.pow(-4)(4) mustEqual 16*16F
+    }
+
+    "pass scalacheck set of input" in {
+      prop { (base: Int, power: Int) => subject.pow(base)(power) mustEqual Math.pow(base, power) }
     }
 
   }
