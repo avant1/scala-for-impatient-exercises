@@ -70,13 +70,48 @@ class Chapter2Spec extends Specification {
   }
 
   "recursive chars product" should {
-//    "be equal to 0 for empty input string" in {
-//      subject.recursiveCharsProduct("") mustEqual 0
-//    }
-
     "of 'Hello' must be equal to 9415087488L" in {
       subject.recursiveCharsProduct("Hello") mustEqual 9415087488L
     }
   }
+
+  "pow" should {
+
+    "be equal to 1 if power equals 0 for any base" in {
+      subject.pow(0)(0) mustEqual 1F
+      subject.pow(50)(0) mustEqual 1F
+      subject.pow(-42)(0) mustEqual 1F
+    }
+
+    "calculate correct value when base is positive and power is positive" in {
+      subject.pow(5)(2) mustEqual 25F
+      subject.pow(4)(3) mustEqual 64F
+      subject.pow(2)(5) mustEqual 32F
+    }
+
+    "calculate correct value when base is negative and power is positive" in {
+      subject.pow(-4)(3) mustEqual -64F
+      subject.pow(-2)(5) mustEqual -32F
+    }
+
+    "return positive number for negative base and positive and odd power" in {
+      subject.pow(-5)(2) mustEqual 25F
+      subject.pow(-1)(6) mustEqual 1F
+    }
+
+    "calculate correct value when power is negative and base is negative too" in {
+      subject.pow(-2)(-2) mustEqual 0.25
+      subject.pow(-3)(-3) mustEqual -1/27
+      subject.pow(-4)(-4) mustEqual 1/(16*16)
+    }
+
+    "calculate correct value when power is positive and base is negative" in {
+      subject.pow(-2)(2) mustEqual 4
+      subject.pow(-3)(3) mustEqual -27
+      subject.pow(-4)(4) mustEqual 16*16F
+    }
+
+  }
+
 
 }

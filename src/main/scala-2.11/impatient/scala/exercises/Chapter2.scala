@@ -63,5 +63,9 @@ class Chapter2 {
   }
 
 
+  def pow(base: Int)(power: Int): Float = {
+    42
+  }
+
 
 }
