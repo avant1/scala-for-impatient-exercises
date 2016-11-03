@@ -12,5 +12,9 @@ class Chapter3 {
     (1 to n map { _ => random.nextInt(n) }).toArray
   }
 
+  def swapAdjacentElements(a: Array[Int]): Array[Int] = {
+    Array()
+  }
+
 
 }

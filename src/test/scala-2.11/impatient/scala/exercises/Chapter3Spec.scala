@@ -33,4 +33,24 @@ class Chapter3Spec extends Specification with ScalaCheck with Mockito {
 
   }
 
+  "swap adjacent elements" should {
+
+    "be able to handle empty array" in {
+      subject.swapAdjacentElements(Array()) mustEqual Array()
+    }
+
+    "be able to handle array containing only one element" in {
+      subject.swapAdjacentElements(Array(0)) mustEqual Array(0)
+    }
+
+    "swap elements correctly when array contains even number of elements" in {
+      subject.swapAdjacentElements(Array(5, 4, 3, 2)) mustEqual Array(4, 5, 2, 3)
+    }
+
+    "swap elements correctly when array contains odd number of elements" in {
+      subject.swapAdjacentElements(Array(5, 4, 3, 2, 1)) mustEqual Array(4, 5, 2, 3, 1)
+    }
+
+  }
+
 }
