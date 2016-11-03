@@ -13,7 +13,14 @@ class Chapter3 {
   }
 
   def swapAdjacentElements(a: Array[Int]): Array[Int] = {
-    Array()
+    val evenKeysWithoutLastOne = a.indices.dropRight(1).filter(x => x % 2 == 0)
+    for (k <- evenKeysWithoutLastOne) {
+      val tmp = a(k)
+      a(k) = a(k + 1)
+      a(k + 1) = tmp
+    }
+
+    a
   }
 
 
