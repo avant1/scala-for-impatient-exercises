@@ -22,9 +22,9 @@ class Chapter3Spec extends Specification with ScalaCheck with Mockito {
     "should generate random array in given borders of given size" in {
       val random = mock[Random]
       random.nextInt(5) returns 2 thenReturns 1 thenReturns 3 thenReturns 3 thenReturns 4
-      there were three(random).nextInt(5)
+      subject.generateRandomArray(5)(random) mustEqual Array[Int](2, 1, 3, 3, 4)
 
-      subject.generateRandomArray(3)(random) mustEqual Array[Int](2, 1, 3, 3, 4)
+      there were 5.times(random).nextInt(5)
     }
 
     "should throw exception when input is negative" in {
