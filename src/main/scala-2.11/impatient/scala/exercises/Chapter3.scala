@@ -2,6 +2,8 @@ package impatient.scala.exercises
 
 import impatient.scala.utils.random._
 
+import scala.collection.mutable.ArrayBuffer
+
 class Chapter3 {
 
   def generateRandomArray(n: Int)(implicit random: Random = RealRandom): Array[Int] = {
@@ -34,7 +36,7 @@ class Chapter3 {
   }
 
   def reorderElements(a: Array[Int]): Array[Int] = {
-    Array()
+    a.filter(x => x > 0) ++ a.filter(x => x <= 0)
   }
 
 
