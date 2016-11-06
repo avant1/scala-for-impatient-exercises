@@ -23,10 +23,9 @@ class Chapter3 {
     a
   }
 
-  //todo refactor
   def swapAdjacentElementsAndProduceNewArray(a: Array[Int]): Array[Int] = {
     val evenKeysWithoutLastOne = a.indices.dropRight(1).filter(x => x % 2 == 0)
-    val partialResult = (for (k <- evenKeysWithoutLastOne) yield (a(k + 1), a(k))) . flatMap(t => Array(t._1, t._2)).toArray
+    val partialResult = (for (k <- evenKeysWithoutLastOne) yield Array(a(k + 1), a(k))).flatten.toArray
 
     if (partialResult.length < a.length)
       partialResult ++ Array(a.last)
