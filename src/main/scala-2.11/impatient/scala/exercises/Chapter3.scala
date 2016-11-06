@@ -33,5 +33,9 @@ class Chapter3 {
       partialResult
   }
 
+  def reorderElements(a: Array[Int]): Array[Int] = {
+    Array()
+  }
+
 
 }

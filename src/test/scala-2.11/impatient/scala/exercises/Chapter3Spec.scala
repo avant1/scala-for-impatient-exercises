@@ -73,4 +73,24 @@ class Chapter3Spec extends Specification with ScalaCheck with Mockito {
 
   }
 
+  "reorder elements" should {
+
+    "be able to handle empty array" in {
+      subject.reorderElements(Array()) mustEqual Array()
+    }
+
+    "return array containing all positive elements in original order followed by all negative elements in original order" in {
+      subject.reorderElements(Array(5, -1, 6, -2, -2, -3, 7, 8, 0)) mustEqual Array(5, 6, 7, 8, -1, -2, -3, 0)
+    }
+
+    "handle array containing only positive elements" in {
+      subject.reorderElements(Array(5, 4, 3, 2)) mustEqual Array(5, 4, 3, 2)
+    }
+
+    "handle array containing only negative elements" in {
+      subject.reorderElements(Array(-1, -2, -5, -1)) mustEqual Array(-1, -2, -5, -1)
+    }
+
+  }
+
 }
