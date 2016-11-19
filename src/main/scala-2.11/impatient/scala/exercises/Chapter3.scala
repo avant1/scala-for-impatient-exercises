@@ -2,8 +2,6 @@ package impatient.scala.exercises
 
 import impatient.scala.utils.random._
 
-import scala.collection.mutable.ArrayBuffer
-
 class Chapter3 {
 
   def generateRandomArray(n: Int)(implicit random: Random = RealRandom): Array[Int] = {
