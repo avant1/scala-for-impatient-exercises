@@ -9,7 +9,7 @@ class Chapter4 {
     map.map(tuple => (tuple._1, tuple._2 / 100 * 90))
   }
 
-  def countWordsNumberInFile(file: File)(implicit scanner: Scanner = new Scanner(file)): Map[String, Int] = {
+  def countWordsNumbersInString(text: String): Map[String, Int] = {
     Map()
   }
 

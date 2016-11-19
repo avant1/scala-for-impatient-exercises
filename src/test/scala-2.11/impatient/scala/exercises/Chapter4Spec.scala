@@ -27,21 +27,11 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
   "words frequency in a file calculator" should {
 
     "handle empty file gracefully" in {
-      val file = mock[File]
-      val scanner = mock[Scanner]
-      scanner.hasNext() returns false
-
-      subject.countWordsNumberInFile(file)(scanner) mustEqual Map()
+      subject.countWordsNumbersInString("") mustEqual Map()
     }
 
     "correctly count number of words" in {
-      val file = mock[File]
-      val scanner = mock[Scanner]
-
-      scanner.hasNext() returns true thenReturns true thenReturns false
-      scanner.next() returns "foo" thenReturns "bar" thenReturns "foo"
-
-      subject.countWordsNumberInFile(file)(scanner) mustEqual Map("foo" -> 2, "bar" -> 1)
+      subject.countWordsNumbersInString("foo bar foo") mustEqual Map("foo" -> 2, "bar" -> 1)
     }
 
   }
