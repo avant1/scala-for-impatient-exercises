@@ -1,7 +1,10 @@
 package impatient.scala.exercises
 
+import java.util
 import java.util.Scanner
 import impatient.scala.utils.print.{ConsolePrinter, Printer}
+import scala.collection.JavaConversions.mapAsScalaMap
+
 import scala.collection.SortedMap
 import scala.collection.mutable.{Map => MutableMap}
 
@@ -41,6 +44,22 @@ class Chapter4 {
       val next = scanner.next()
 
       map = map + (next -> (map.getOrElse(next, 0) + 1))
+    }
+
+    for ((k, v) <- map) {
+      printer.println(s"$k: $v")
+    }
+
+    map.toMap
+  }
+
+  def countWordsNumbersInStringWithJavaTreeMap(text: String)(implicit printer: Printer = ConsolePrinter): Map[String, Int] = {
+    val scanner = new Scanner(text)
+    val map: MutableMap[String, Int] = new util.TreeMap[String, Int]
+    while (scanner.hasNext) {
+      val next = scanner.next()
+
+      map(next) = map.getOrElse(next, 0) + 1
     }
 
     for ((k, v) <- map) {

@@ -61,5 +61,21 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
 
   }
 
+  "words frequency in a file calculator with java.util.TreeMap" should {
+
+    "handle empty file gracefully" in {
+      subject.countWordsNumbersInStringWithSortedMap("") mustEqual Map()
+    }
+
+    "correctly count number of words" in {
+      val printer = mock[Printer]
+
+      subject.countWordsNumbersInStringWithSortedMap("foo bar foo")(printer) mustEqual Map("bar" -> 1, "foo" -> 2)
+
+      there was one(printer).println("bar: 1") andThen one(printer).println("foo: 2")
+    }
+
+  }
+
 
 }
