@@ -1,6 +1,8 @@
 package impatient.scala.exercises
 
 import java.util.Scanner
+import impatient.scala.utils.print.{ConsolePrinter, Printer}
+import scala.collection.SortedMap
 import scala.collection.mutable.{Map => MutableMap}
 
 class Chapter4 {
@@ -30,6 +32,22 @@ class Chapter4 {
     }
 
     map
+  }
+
+  def countWordsNumbersInStringWithSortedMap(text: String)(implicit printer: Printer = ConsolePrinter): Map[String, Int] = {
+    val scanner = new Scanner(text)
+    var map : SortedMap[String, Int] = SortedMap()
+    while (scanner.hasNext) {
+      val next = scanner.next()
+
+      map = map + (next -> (map.getOrElse(next, 0) + 1))
+    }
+
+    for ((k, v) <- map) {
+      printer.println(s"$k: $v")
+    }
+
+    map.toMap
   }
 
 }
