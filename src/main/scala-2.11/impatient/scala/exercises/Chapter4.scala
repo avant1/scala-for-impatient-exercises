@@ -20,4 +20,16 @@ class Chapter4 {
     mutableMap.toMap
   }
 
+  def countWordsNumbersInStringWithImmutableMap(text: String): Map[String, Int] = {
+    val scanner = new Scanner(text)
+    var map : Map[String, Int] = Map()
+    while (scanner.hasNext) {
+      val next = scanner.next()
+
+      map = map + (next -> (map.getOrElse(next, 0) + 1))
+    }
+
+    map
+  }
+
 }

@@ -36,5 +36,17 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
 
   }
 
+  "words frequency in a file calculator with immutable map" should {
+
+    "handle empty file gracefully" in {
+      subject.countWordsNumbersInStringWithImmutableMap("") mustEqual Map()
+    }
+
+    "correctly count number of words" in {
+      subject.countWordsNumbersInStringWithImmutableMap("foo bar foo") mustEqual Map("foo" -> 2, "bar" -> 1)
+    }
+
+  }
+
 
 }
