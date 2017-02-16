@@ -102,5 +102,16 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
     }
   }
 
+  "minMax" should {
+    "return pair containing smallest and largest value in array" in {
+      subject.minMax(Array(5, 0, 9, -12, 42)) mustEqual((-12, 42))
+    }
+
+    "throw exception if array is empty" in {
+      subject.minMax(Array()) must throwA[IllegalArgumentException]
+    }
+
+  }
+
 
 }

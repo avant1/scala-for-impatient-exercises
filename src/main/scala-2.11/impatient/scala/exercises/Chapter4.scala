@@ -110,5 +110,9 @@ class Chapter4 {
 
   }
 
+  def minMax(values: Array[Int]): (Int, Int) = {
+    (0, 0)
+  }
+
 
 }
