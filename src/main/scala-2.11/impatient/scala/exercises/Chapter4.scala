@@ -111,7 +111,11 @@ class Chapter4 {
   }
 
   def minMax(values: Array[Int]): (Int, Int) = {
-    (0, 0)
+    if (values.isEmpty) {
+      throw new IllegalArgumentException("Cannot detect min nor max value of empty array")
+    }
+
+    (values.min, values.max)
   }
 
 
