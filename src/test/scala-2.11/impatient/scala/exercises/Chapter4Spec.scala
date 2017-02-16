@@ -89,8 +89,17 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
       //todo how can this andThen stuff be writted on multiple lines?
       there was one(printer).println("Sunday: 1") andThen one(printer).println("Monday: 2") andThen one(printer).println("Tuesday: 3")
     }
+  }
 
+  "printing java properties" should {
+    "boviously print java properties" in {
 
+      val printer = mock[Printer]
+
+      //how am I going to test the output? it depends on machine
+      //should I mock java.lang.System or and an abstraction layer for it?
+      subject.printJavaProperties()(printer) must not(throwA[Exception])
+    }
   }
 
 

@@ -1,11 +1,13 @@
 package impatient.scala.exercises
 
+import java.io.{File, PrintWriter}
 import java.util
 import java.util.{Calendar, Scanner}
 
 import impatient.scala.utils.print.{ConsolePrinter, Printer}
 
 import scala.collection.JavaConversions.mapAsScalaMap
+import scala.collection.JavaConversions.propertiesAsScalaMap
 import scala.collection.{SortedMap, mutable}
 import scala.collection.mutable.{Map => MutableMap}
 
@@ -90,6 +92,21 @@ class Chapter4 {
       callback(s, i)
     }
 
+  }
+
+  def printJavaProperties()(implicit printer: Printer = ConsolePrinter) {
+    val props = System.getProperties
+    val keys = props.map(_._1)
+    val keysLengths = keys.map(_.length)
+    val maxLength = keysLengths.max
+    val values = props.map(_._2)
+    val leftParts = keys.zip(keysLengths).map(t => t._1 + (" " * (maxLength - t._2)))
+    val result = leftParts.zip(values).map(t => t._1 + "| " + t._2).mkString("\n")
+
+    printer.println(result)
+
+//    val writer = new PrintWriter(new File("C:\java-properties-table.txt"))
+//    try writer.write(result) finally writer.close()
 
   }
 
