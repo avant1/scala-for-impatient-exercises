@@ -21,6 +21,7 @@ class Chapter4 {
       val next = scanner.next()
       mutableMap(next) = mutableMap.getOrElse(next, 0) + 1
     }
+    scanner.close()
 
     mutableMap.toMap
   }
@@ -33,6 +34,7 @@ class Chapter4 {
 
       map = map + (next -> (map.getOrElse(next, 0) + 1))
     }
+    scanner.close()
 
     map
   }
@@ -45,6 +47,7 @@ class Chapter4 {
 
       map = map + (next -> (map.getOrElse(next, 0) + 1))
     }
+    scanner.close()
 
     for ((k, v) <- map) {
       printer.println(s"$k: $v")
@@ -61,6 +64,7 @@ class Chapter4 {
 
       map(next) = map.getOrElse(next, 0) + 1
     }
+    scanner.close()
 
     for ((k, v) <- map) {
       printer.println(s"$k: $v")
