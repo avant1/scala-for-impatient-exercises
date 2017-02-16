@@ -115,7 +115,9 @@ class Chapter4 {
       throw new IllegalArgumentException("Cannot detect min nor max value of empty array")
     }
 
-    (values.min, values.max)
+    val sorted = values.sorted
+
+    (sorted.head, sorted.last)
   }
 
 
