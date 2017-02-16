@@ -1,11 +1,12 @@
 package impatient.scala.exercises
 
 import java.util
-import java.util.Scanner
-import impatient.scala.utils.print.{ConsolePrinter, Printer}
-import scala.collection.JavaConversions.mapAsScalaMap
+import java.util.{Calendar, Scanner}
 
-import scala.collection.SortedMap
+import impatient.scala.utils.print.{ConsolePrinter, Printer}
+
+import scala.collection.JavaConversions.mapAsScalaMap
+import scala.collection.{SortedMap, mutable}
 import scala.collection.mutable.{Map => MutableMap}
 
 class Chapter4 {
@@ -72,5 +73,25 @@ class Chapter4 {
 
     map.toMap
   }
+
+  def buildAndIterateWeekDays(callback: (String, Int) => Unit) {
+
+    val map = new mutable.LinkedHashMap[String, Int]
+
+    map("Sunday") = Calendar.SUNDAY
+    map("Monday") = Calendar.MONDAY
+    map("Tuesday") = Calendar.TUESDAY
+    map("Wednesday") = Calendar.WEDNESDAY
+    map("Thursda") = Calendar.THURSDAY
+    map("Friday") = Calendar.FRIDAY
+    map("Saturday") = Calendar.SATURDAY
+
+    for ((s, i) <- map) {
+      callback(s, i)
+    }
+
+
+  }
+
 
 }

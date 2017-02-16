@@ -78,4 +78,20 @@ class Chapter4Spec extends Specification with ScalaCheck with Mockito {
   }
 
 
+  "linked hash map iteration order" should {
+
+    "be the same as insertion order" in {
+
+      val printer = mock[Printer]
+
+      subject.buildAndIterateWeekDays((string, int) => printer.println(s"$string: $int"))
+
+      //todo how can this andThen stuff be writted on multiple lines?
+      there was one(printer).println("Sunday: 1") andThen one(printer).println("Monday: 2") andThen one(printer).println("Tuesday: 3")
+    }
+
+
+  }
+
+
 }
